@@ -14,11 +14,18 @@ interface ISelectProps {
 	isExpanded: boolean;
 	onExpand: () => void;
 	onRemoveSelectedItem: (id: string) => void;
+	isMultiple?: boolean;
 }
 
 const Select: FC<ISelectProps> = (props) => {
-	const { title, selectedItems, isExpanded, onExpand, onRemoveSelectedItem } =
-		props;
+	const {
+		title,
+		selectedItems,
+		isExpanded,
+		isMultiple,
+		onExpand,
+		onRemoveSelectedItem,
+	} = props;
 
 	const expandListHandler = (e: MouseEvent) => {
 		e.stopPropagation();
@@ -26,6 +33,8 @@ const Select: FC<ISelectProps> = (props) => {
 	};
 
 	const hasSelectedItems = selectedItems.length > 0;
+	const singleItem = hasSelectedItems && !isMultiple;
+	const multipleItems = hasSelectedItems && isMultiple;
 
 	return (
 		<div className={classes.select} onClick={expandListHandler}>
@@ -35,7 +44,12 @@ const Select: FC<ISelectProps> = (props) => {
 					из списка
 				</div>
 			)}
-			{hasSelectedItems && (
+			{singleItem && (
+				<div className={classes.singleItem}>
+					{selectedItems[0].name}
+				</div>
+			)}
+			{multipleItems && (
 				<div className={classes.itemsWrapper}>
 					<div className={classes.items}>
 						{selectedItems.map((item) => (

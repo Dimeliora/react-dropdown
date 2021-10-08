@@ -26,6 +26,7 @@ const App: FC = () => {
 				items={items}
 				onSelect={selectChangeHandler}
 				multiple
+				// noIcon
 			/>
 		</div>
 	);

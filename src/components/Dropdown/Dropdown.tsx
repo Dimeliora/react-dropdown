@@ -20,7 +20,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 
 	const [selectedItems, setSelectedItems] = useState<IItem[]>([]);
 	const [isListVisible, setIsListVisible] = useState<boolean>(false);
-	const [searchItemTemplate, setSearchItemTemplate] = useState<string>("");
+	const [searchTemplate, setSearchTemplate] = useState<string>("");
 
 	const dropdownElement = useRef<HTMLDivElement>(null);
 
@@ -44,36 +44,41 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 		};
 	}, []);
 
-	const showListHandler = () => {
+	const showListHandler = (): void => {
 		setIsListVisible((prev) => !prev);
 	};
 
-	const removeSelectedItemHandler = (id: string) => {
+	const removeSelectedItemHandler = (id: string): void => {
 		setSelectedItems((prev) => prev.filter((item) => item.id !== id));
 	};
 
-	const selectItemsHandler = (currentItem: IItem) => {
+	const selectItemsHandler = (currentItem: IItem): void => {
 		if (selectedItems.some((item) => item.id === currentItem.id)) {
 			setSelectedItems((prev) =>
 				prev.filter((item) => item.id !== currentItem.id)
 			);
+
+			if (!multiple) {
+				setIsListVisible(false);
+			}
 			return;
 		}
 
-		if (multiple) {
-			setSelectedItems((prev) => [...prev, currentItem]);
+		if (!multiple) {
+			setSelectedItems([currentItem]);
+			setIsListVisible(false);
 			return;
 		}
 
-		setSelectedItems([currentItem]);
+		setSelectedItems((prev) => [...prev, currentItem]);
 	};
 
-	const searchChangeHandler = (value: string) => {
-		setSearchItemTemplate(value);
+	const searchChangeHandler = (value: string): void => {
+		setSearchTemplate(value);
 	};
 
-	const filterItems = () => {
-		const filterTemplate = searchItemTemplate.toLowerCase().trim();
+	const filterItems = (): IItem[] => {
+		const filterTemplate = searchTemplate.toLowerCase().trim();
 
 		return items.filter((item) =>
 			item.name.toLowerCase().includes(filterTemplate)
@@ -87,6 +92,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 				title={title}
 				selectedItems={selectedItems}
 				isExpanded={isListVisible}
+				isMultiple={multiple}
 				onExpand={showListHandler}
 				onRemoveSelectedItem={removeSelectedItemHandler}
 			/>
@@ -94,7 +100,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 				<List
 					items={filterItems()}
 					selectedItems={selectedItems}
-					searchItemTemplate={searchItemTemplate}
+					searchTemplate={searchTemplate}
 					noIcon={noIcon}
 					onListItemSearch={searchChangeHandler}
 					onListItemCheck={selectItemsHandler}

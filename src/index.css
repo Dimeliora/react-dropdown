@@ -16,12 +16,6 @@
 	font-style: normal;
 }
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
 :root {
 	--gray-border-color: #c1c1c1;
 	--gray-bg-color: #f4f4f4;
@@ -32,6 +26,12 @@
 	--active-checkbox-border-color: #0049d9;
 	--active-checkbox-bg-color: #005ffd;
 	--remove-color: #c40b0b;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
 html {

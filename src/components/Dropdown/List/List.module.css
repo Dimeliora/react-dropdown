@@ -12,6 +12,7 @@
 	padding: 0;
 	list-style-type: none;
 	overflow-y: auto;
+	scrollbar-width: thin;
 	scrollbar-color: var(--scroll-thumb-bg-color) var(--scroll-track-bg-color);
 }
 
@@ -20,13 +21,12 @@
 }
 
 .itemsList::-webkit-scrollbar-track {
-	background-color: transparent;
+	background-color: var(--scroll-track-bg-color);
 }
 
 .itemsList::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	background-color: var(--scroll-thumb-bg-color);
-	cursor: pointer;
 }
 
 .itemsList::-webkit-scrollbar-thumb:hover {

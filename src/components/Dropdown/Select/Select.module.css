@@ -7,10 +7,15 @@
 	cursor: pointer;
 }
 
+.singleItem,
 .placeholder {
 	color: var(--gray-border-color);
 	line-height: 3.6rem;
 	user-select: none;
+}
+
+.singleItem {
+	color: var(--dark-font-color);
 }
 
 .itemName {
@@ -27,6 +32,7 @@
 	align-items: center;
 	padding: 5px 0;
 	overflow-x: auto;
+	scrollbar-width: thin;
 	scrollbar-color: var(--scroll-thumb-bg-color) var(--scroll-track-bg-color);
 }
 
@@ -35,7 +41,7 @@
 }
 
 .items::-webkit-scrollbar-track {
-	background-color: transparent;
+	background-color: var(--scroll-track-bg-color);
 }
 
 .items::-webkit-scrollbar-thumb {

@@ -11,7 +11,7 @@ import { IItem } from "../../../interfaces/item.interface";
 interface IListProps {
 	items: IItem[];
 	selectedItems: IItem[];
-	searchItemTemplate: string;
+	searchTemplate: string;
 	onListItemSearch: (value: string) => void;
 	onListItemCheck: (item: IItem) => void;
 	noIcon?: boolean;
@@ -21,7 +21,7 @@ const List: FC<IListProps> = (props) => {
 	const {
 		items,
 		selectedItems,
-		searchItemTemplate,
+		searchTemplate,
 		onListItemSearch,
 		onListItemCheck,
 		noIcon,
@@ -45,7 +45,7 @@ const List: FC<IListProps> = (props) => {
 
 	return (
 		<div className={classes.list}>
-			<Search value={searchItemTemplate} onSearch={onListItemSearch} />
+			<Search value={searchTemplate} onSearch={onListItemSearch} />
 			<ul
 				ref={listElement}
 				className={cn(classes.itemsList, {
