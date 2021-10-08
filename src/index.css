@@ -1,9 +1,49 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+	font-family: "TT Norms Pro";
+	src: url("./assets/fonts/TTNormsPro-Regular.woff2") format("woff2"),
+		url("./assets/fonts/TTNormsPro-Regular.woff") format("woff");
+	font-display: swap;
+	font-weight: 400;
+	font-style: normal;
 }
 
+@font-face {
+	font-family: "TT Norms Pro";
+	src: url("./assets/fonts/TTNormsPro-Bold.woff2") format("woff2"),
+		url("./assets/fonts/TTNormsPro-Bold.woff") format("woff");
+	font-display: swap;
+	font-weight: 500;
+	font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:root {
+	--gray-border-color: #c1c1c1;
+	--gray-bg-color: #f4f4f4;
+	--dark-font-color: #333333;
+	--scroll-track-bg-color: transparent;
+	--scroll-thumb-bg-color: #cccccc;
+	--scroll-thumb-bg-color-hover: #aaaaaa;
+	--active-checkbox-border-color: #0049d9;
+	--active-checkbox-bg-color: #005ffd;
+	--remove-color: #c40b0b;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0;
+	background-color: var(--gray-bg-color);
+	color: var(--dark-font-color);
+	font-family: "TT Norms Pro", sans-serif;
+	font-size: 1.6rem;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
