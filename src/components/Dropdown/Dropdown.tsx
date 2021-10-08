@@ -20,6 +20,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 
 	const [selectedItems, setSelectedItems] = useState<IItem[]>([]);
 	const [isListVisible, setIsListVisible] = useState<boolean>(false);
+	const [searchItemTemplate, setSearchItemTemplate] = useState<string>("");
 
 	useEffect(() => {
 		onSelect(selectedItems);
@@ -49,6 +50,17 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 		setSelectedItems([currentItem]);
 	};
 
+	const searchChangeHandler = (value: string) => {
+		setSearchItemTemplate(value);
+	};
+
+	const filterItems = () => {
+		const filterTemplate = searchItemTemplate.toLowerCase().trim();
+		return items.filter((item) =>
+			item.name.toLowerCase().includes(filterTemplate)
+		);
+	};
+
 	return (
 		<div className={classes.dropdown}>
 			<div className={classes.title}>{title}</div>
@@ -61,9 +73,11 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 			/>
 			{isListVisible && (
 				<List
-					items={items}
+					items={filterItems()}
 					selectedItems={selectedItems}
+					searchItemTemplate={searchItemTemplate}
 					noIcon={noIcon}
+					onListItemSearch={searchChangeHandler}
 					onListItemCheck={selectItemsHandler}
 				/>
 			)}

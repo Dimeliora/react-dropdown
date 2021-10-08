@@ -1,6 +1,7 @@
 import { FC, useState, useEffect, useRef } from "react";
 import cn from "classnames";
 
+import Search from "../Search/Search";
 import ListItem from "../ListItem/ListItem";
 
 import classes from "./List.module.css";
@@ -10,12 +11,21 @@ import { IItem } from "../../../interfaces/item.interface";
 interface IListProps {
 	items: IItem[];
 	selectedItems: IItem[];
+	searchItemTemplate: string;
+	onListItemSearch: (value: string) => void;
 	onListItemCheck: (item: IItem) => void;
 	noIcon?: boolean;
 }
 
 const List: FC<IListProps> = (props) => {
-	const { items, selectedItems, onListItemCheck, noIcon } = props;
+	const {
+		items,
+		selectedItems,
+		searchItemTemplate,
+		onListItemSearch,
+		onListItemCheck,
+		noIcon,
+	} = props;
 
 	const [isScrollable, setIsScrollabe] = useState<boolean>(false);
 
@@ -35,6 +45,7 @@ const List: FC<IListProps> = (props) => {
 
 	return (
 		<div className={classes.list}>
+			<Search value={searchItemTemplate} onSearch={onListItemSearch} />
 			<ul
 				ref={listElement}
 				className={cn(classes.itemsList, {
