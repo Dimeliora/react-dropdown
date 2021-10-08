@@ -8,10 +8,11 @@ interface IListItemProps {
 	item: IItem;
 	isChecked: boolean;
 	onCheck: (item: IItem) => void;
+	noIcon?: boolean;
 }
 
 const ListItem: FC<IListItemProps> = (props) => {
-	const { item, isChecked, onCheck } = props;
+	const { item, isChecked, onCheck, noIcon } = props;
 	const { id, icon, name } = item;
 
 	const itemCheckHandler = () => {
@@ -20,10 +21,15 @@ const ListItem: FC<IListItemProps> = (props) => {
 
 	return (
 		<li className={classes.listItem}>
-			<div className={classes.listItemIcon}>
-				<img src={icon} alt={name} className={classes.listItemImage} />
-			</div>
-
+			{!noIcon && (
+				<div className={classes.listItemIcon}>
+					<img
+						src={icon}
+						alt={name}
+						className={classes.listItemImage}
+					/>
+				</div>
+			)}
 			<label htmlFor={id} className={classes.listItemName}>
 				{name}
 			</label>

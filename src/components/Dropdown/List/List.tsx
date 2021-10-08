@@ -11,10 +11,11 @@ interface IListProps {
 	items: IItem[];
 	selectedItems: IItem[];
 	onListItemCheck: (item: IItem) => void;
+	noIcon?: boolean;
 }
 
 const List: FC<IListProps> = (props) => {
-	const { items, selectedItems, onListItemCheck } = props;
+	const { items, selectedItems, onListItemCheck, noIcon } = props;
 
 	const [isScrollable, setIsScrollabe] = useState<boolean>(false);
 
@@ -46,6 +47,7 @@ const List: FC<IListProps> = (props) => {
 						item={item}
 						isChecked={isItemSelected(item.id)}
 						onCheck={onListItemCheck}
+						noIcon={noIcon}
 					/>
 				))}
 			</ul>

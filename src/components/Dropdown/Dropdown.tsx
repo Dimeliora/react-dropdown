@@ -63,6 +63,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 				<List
 					items={items}
 					selectedItems={selectedItems}
+					noIcon={noIcon}
 					onListItemCheck={selectItemsHandler}
 				/>
 			)}
