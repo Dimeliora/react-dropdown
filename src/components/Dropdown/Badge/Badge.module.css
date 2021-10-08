@@ -30,8 +30,8 @@
 }
 
 .removeButton:hover .removeIcon {
-	transform: scale(1.2);
 	fill: var(--remove-color);
+	transform: scale(1.2);
 }
 
 .removeIcon {
@@ -43,7 +43,7 @@
 
 @media screen and (max-width: 767px) {
 	.removeButton:hover .removeIcon {
-		transform: none;
 		fill: var(--dark-font-color);
+		transform: none;
 	}
 }

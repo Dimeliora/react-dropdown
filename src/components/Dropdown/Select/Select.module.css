@@ -23,9 +23,9 @@
 
 .items {
 	position: relative;
-	padding: 5px 0;
 	display: flex;
 	align-items: center;
+	padding: 5px 0;
 	overflow-x: auto;
 	scrollbar-color: var(--scroll-thumb-bg-color) var(--scroll-track-bg-color);
 }
@@ -39,8 +39,8 @@
 }
 
 .items::-webkit-scrollbar-thumb {
-	background-color: var(--scroll-thumb-bg-color);
 	border-radius: 10px;
+	background-color: var(--scroll-thumb-bg-color);
 }
 
 .items::-webkit-scrollbar-thumb:hover {

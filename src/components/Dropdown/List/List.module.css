@@ -7,10 +7,10 @@
 }
 
 .itemsList {
-	list-style-type: none;
 	max-height: 360px;
 	margin: 0;
 	padding: 0;
+	list-style-type: none;
 	overflow-y: auto;
 	scrollbar-color: var(--scroll-thumb-bg-color) var(--scroll-track-bg-color);
 }
@@ -24,8 +24,8 @@
 }
 
 .itemsList::-webkit-scrollbar-thumb {
-	background-color: var(--scroll-thumb-bg-color);
 	border-radius: 10px;
+	background-color: var(--scroll-thumb-bg-color);
 	cursor: pointer;
 }
 

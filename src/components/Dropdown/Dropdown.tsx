@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useRef } from "react";
 
 import Select from "./Select/Select";
 import List from "./List/List";
@@ -22,9 +22,27 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 	const [isListVisible, setIsListVisible] = useState<boolean>(false);
 	const [searchItemTemplate, setSearchItemTemplate] = useState<string>("");
 
+	const dropdownElement = useRef<HTMLDivElement>(null);
+
 	useEffect(() => {
 		onSelect(selectedItems);
 	}, [selectedItems, onSelect]);
+
+	useEffect(() => {
+		const outsideClickHandler = (e: MouseEvent) => {
+			const dropdown = dropdownElement.current;
+
+			if (dropdown && !e.composedPath().includes(dropdown)) {
+				setIsListVisible(false);
+			}
+		};
+
+		document.addEventListener("click", outsideClickHandler);
+
+		return () => {
+			document.removeEventListener("click", outsideClickHandler);
+		};
+	}, []);
 
 	const showListHandler = () => {
 		setIsListVisible((prev) => !prev);
@@ -56,13 +74,14 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 
 	const filterItems = () => {
 		const filterTemplate = searchItemTemplate.toLowerCase().trim();
+
 		return items.filter((item) =>
 			item.name.toLowerCase().includes(filterTemplate)
 		);
 	};
 
 	return (
-		<div className={classes.dropdown}>
+		<div ref={dropdownElement} className={classes.dropdown}>
 			<div className={classes.title}>{title}</div>
 			<Select
 				title={title}

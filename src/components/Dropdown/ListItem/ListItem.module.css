@@ -32,6 +32,7 @@
 }
 
 .listItemCheckbox {
+	appearance: none;
 	width: 24px;
 	height: 24px;
 	margin: 0;
@@ -39,7 +40,6 @@
 	border-radius: 4px;
 	cursor: pointer;
 	transition: border-color 0.2s ease-out;
-	appearance: none;
 }
 
 .listItemCheckbox:hover,
