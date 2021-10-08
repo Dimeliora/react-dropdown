@@ -27,7 +27,7 @@ const Select: FC<ISelectProps> = (props) => {
 		onRemoveSelectedItem,
 	} = props;
 
-	const expandListHandler = (e: MouseEvent) => {
+	const expandListHandler = (e: MouseEvent): void => {
 		e.stopPropagation();
 		onExpand();
 	};

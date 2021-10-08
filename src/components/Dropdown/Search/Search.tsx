@@ -12,7 +12,7 @@ interface ISearchProps {
 const Search: FC<ISearchProps> = (props) => {
 	const { value, onSearch } = props;
 
-	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
 		onSearch(e.target.value);
 	};
 

@@ -13,7 +13,7 @@ interface IBadgeProps {
 const Badge: FC<IBadgeProps> = (props) => {
 	const { id, title, onRemove } = props;
 
-	const removeItemHandler = (e: MouseEvent<HTMLButtonElement>) => {
+	const removeItemHandler = (e: MouseEvent<HTMLButtonElement>): void => {
 		e.stopPropagation();
 		onRemove(id);
 	};

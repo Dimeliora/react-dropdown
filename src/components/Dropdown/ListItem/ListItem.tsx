@@ -15,7 +15,7 @@ const ListItem: FC<IListItemProps> = (props) => {
 	const { item, isChecked, onCheck, noIcon } = props;
 	const { id, icon, name } = item;
 
-	const itemCheckHandler = () => {
+	const itemCheckHandler = (): void => {
 		onCheck(item);
 	};
 
