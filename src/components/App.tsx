@@ -12,7 +12,7 @@ const App: FC = () => {
 	useEffect(() => {
 		fetch("./mocks.json")
 			.then((res) => res.json())
-			.then((data: IItem[]) => setItems(data));
+			.then((data: IItem[]) => setItems(data.slice(0, 5)));
 	}, []);
 
 	const selectChangeHandler = (items: IItem[]) => {

@@ -12,4 +12,28 @@
 	margin: 0;
 	padding: 0;
 	overflow-y: auto;
+	scrollbar-color: var(--scroll-thumb-bg-color) var(--scroll-track-bg-color);
+}
+
+.itemsList::-webkit-scrollbar {
+	width: 7px;
+}
+
+.itemsList::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+.itemsList::-webkit-scrollbar-thumb {
+	background-color: var(--scroll-thumb-bg-color);
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.itemsList::-webkit-scrollbar-thumb:hover {
+	background-color: var(--scroll-thumb-bg-color-hover);
+}
+
+.itemListScrollable {
+	margin-top: 8px;
+	padding-right: 10px;
 }

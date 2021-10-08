@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { FC, useState, useEffect, useRef } from "react";
+import cn from "classnames";
 
 import ListItem from "../ListItem/ListItem";
 
@@ -15,12 +16,30 @@ interface IListProps {
 const List: FC<IListProps> = (props) => {
 	const { items, selectedItems, onListItemCheck } = props;
 
+	const [isScrollable, setIsScrollabe] = useState<boolean>(false);
+
+	const listElement = useRef<HTMLUListElement>(null);
+
+	useEffect(() => {
+		if (listElement.current) {
+			setIsScrollabe(
+				listElement.current.scrollHeight >
+					listElement.current.clientHeight
+			);
+		}
+	}, []);
+
 	const isItemSelected = (id: string): boolean =>
 		selectedItems.some((item) => item.id === id);
 
 	return (
 		<div className={classes.list}>
-			<ul className={classes.itemsList}>
+			<ul
+				ref={listElement}
+				className={cn(classes.itemsList, {
+					[classes.itemListScrollable]: isScrollable,
+				})}
+			>
 				{items.map((item) => (
 					<ListItem
 						key={item.id}
