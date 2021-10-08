@@ -1,0 +1,49 @@
+.badge {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-right: 4px;
+	padding: 6px 14px 6px 12px;
+	border-radius: 10px;
+	background-color: var(--gray-bg-color);
+}
+
+.badge:last-child {
+	margin-right: 0;
+}
+
+.itemName {
+	margin-right: 8px;
+	font-size: 1.2rem;
+	line-height: 1.4rem;
+	user-select: none;
+}
+
+.removeButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 3px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.removeButton:hover .removeIcon {
+	transform: scale(1.2);
+	fill: var(--remove-color);
+}
+
+.removeIcon {
+	width: 8px;
+	height: 8px;
+	fill: var(--dark-font-color);
+	transition: 0.2s ease-out;
+}
+
+@media screen and (max-width: 767px) {
+	.removeButton:hover .removeIcon {
+		transform: none;
+		fill: var(--dark-font-color);
+	}
+}

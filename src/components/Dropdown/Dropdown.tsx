@@ -24,6 +24,10 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 		setIsListVisible((prev) => !prev);
 	};
 
+	const removeSelectedItemHandler = (id: string) => {
+		setSelectedItems((prev) => prev.filter((item) => item.id !== id));
+	};
+
 	return (
 		<div className={classes.dropdown}>
 			<div className={classes.title}>{title}</div>
@@ -32,6 +36,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 				selectedItems={selectedItems}
 				isExpanded={isListVisible}
 				onExpand={showListHandler}
+				onRemoveSelectedItem={removeSelectedItemHandler}
 			/>
 		</div>
 	);
