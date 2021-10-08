@@ -25,6 +25,7 @@ const App: FC = () => {
 				title="Язык"
 				items={items}
 				onSelect={selectChangeHandler}
+				multiple
 			/>
 		</div>
 	);

@@ -1,0 +1,62 @@
+.listItem {
+	display: flex;
+	align-items: center;
+	padding: 8px 0 4px;
+	border-bottom: 1px solid var(--gray-bg-color);
+}
+
+.listItem:last-child {
+	border: none;
+}
+
+.listItemIcon {
+	width: 20px;
+	height: 14px;
+	margin-right: 10px;
+	border-radius: 3px;
+	overflow: hidden;
+	box-shadow: 0 0 4px rgba(51, 51, 51, 0.2);
+}
+
+.listItemImage {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.listItemName {
+	flex-grow: 1;
+	padding: 8px 0;
+	cursor: pointer;
+}
+
+.listItemCheckbox {
+	width: 24px;
+	height: 24px;
+	margin: 0;
+	border: 2px solid var(--gray-border-color);
+	border-radius: 4px;
+	cursor: pointer;
+	transition: border-color 0.2s ease-out;
+	appearance: none;
+}
+
+.listItemCheckbox:hover,
+.listItemName:hover + .listItemCheckbox {
+	border-color: var(--active-checkbox-border-color);
+}
+
+.listItemCheckbox:checked {
+	border-color: var(--active-checkbox-border-color);
+	background: var(--active-checkbox-bg-color)
+		url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxNiAxMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNS4wMjEzIDAuNDc4NzIzQzE0LjM4MyAtMC4xNTk1NzQgMTMuNDI1NSAtMC4xNTk1NzQgMTIuNzg3MiAwLjQ3ODcyM0w2LjQwNDI2IDYuODYxN0wzLjIxMjc3IDMuNjcwMjFDMi41NzQ0NyAzLjAzMTkyIDEuNjE3MDIgMy4wMzE5MiAwLjk3ODcyMyAzLjY3MDIxQzAuMzQwNDI2IDQuMzA4NTEgMC4zNDA0MjYgNS4yNjU5NiAwLjk3ODcyMyA1LjkwNDI2TDUuMjg3MjMgMTAuMjEyOEM1LjYwNjM4IDEwLjUzMTkgNS45MjU1MyAxMC42OTE1IDYuNDA0MjYgMTAuNjkxNUM2Ljg4Mjk4IDEwLjY5MTUgNy4yMDIxMyAxMC41MzE5IDcuNTIxMjggMTAuMjEyOEwxNS4wMjEzIDIuNzEyNzdDMTUuNjU5NiAyLjA3NDQ3IDE1LjY1OTYgMS4xMTcwMiAxNS4wMjEzIDAuNDc4NzIzWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==")
+		no-repeat center;
+}
+
+@media screen and (max-width: 767px) {
+	.listItemCheckbox:hover,
+	.listItemName:hover + .listItemCheckbox {
+		border-color: var(--gray-border-color);
+	}
+}

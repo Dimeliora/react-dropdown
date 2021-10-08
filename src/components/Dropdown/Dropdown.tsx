@@ -1,6 +1,7 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 
 import Select from "./Select/Select";
+import List from "./List/List";
 
 import classes from "./Dropdown.module.css";
 
@@ -20,12 +21,32 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 	const [selectedItems, setSelectedItems] = useState<IItem[]>([]);
 	const [isListVisible, setIsListVisible] = useState<boolean>(false);
 
+	useEffect(() => {
+		onSelect(selectedItems);
+	}, [selectedItems, onSelect]);
+
 	const showListHandler = () => {
 		setIsListVisible((prev) => !prev);
 	};
 
 	const removeSelectedItemHandler = (id: string) => {
 		setSelectedItems((prev) => prev.filter((item) => item.id !== id));
+	};
+
+	const selectItemsHandler = (currentItem: IItem) => {
+		if (selectedItems.some((item) => item.id === currentItem.id)) {
+			setSelectedItems((prev) =>
+				prev.filter((item) => item.id !== currentItem.id)
+			);
+			return;
+		}
+
+		if (multiple) {
+			setSelectedItems((prev) => [...prev, currentItem]);
+			return;
+		}
+
+		setSelectedItems([currentItem]);
 	};
 
 	return (
@@ -38,6 +59,13 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 				onExpand={showListHandler}
 				onRemoveSelectedItem={removeSelectedItemHandler}
 			/>
+			{isListVisible && (
+				<List
+					items={items}
+					selectedItems={selectedItems}
+					onListItemCheck={selectItemsHandler}
+				/>
+			)}
 		</div>
 	);
 };
